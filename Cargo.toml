@@ -1,0 +1,21 @@
+[package]
+name = "platform-serial-linux"
+version = "1.0.0"
+edition = "2021"
+description = "implementation of platform-serial for linux"
+authors = ["Yevhen Shevchenko (boshtannik) <boshtannik@gmail.com>"]
+readmme = "README.md"
+repository = "https://github.com/boshtannik/platform-serial-linux"
+license-file = "LICENSE"
+keywords = ["embedded-nano-mesh", "platform", "serial"]
+categories = ["embedded", "hardware-support"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+embedded-hal = "0.2.7"
+lazy_static = "1.4.0"
+platform-serial = "1.0.1"
+serial-embedded-hal = "0.1.2"
+serial-core = "0.4.0"
+nb = "0.1.3"
