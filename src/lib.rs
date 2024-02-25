@@ -94,3 +94,19 @@ impl embedded_hal::serial::Write<u8> for LinuxSerial {
 }
 
 impl PlatformSerial<u8> for LinuxSerial {}
+
+impl ufmt::uWrite for LinuxSerial {
+    type Error = nb::Error<serial_core::Error>;
+
+    fn write_str(&mut self, s: &str) -> Result<(), Self::Error> {
+        for b in s.as_bytes().iter() {
+            nb::block!(<LinuxSerial as embedded_hal::serial::Write<u8>>::write(
+                self, *b
+            ))
+            .unwrap()
+        }
+        Ok(())
+    }
+
+    // fn write_char is implemented by default trait uWrite
+}
